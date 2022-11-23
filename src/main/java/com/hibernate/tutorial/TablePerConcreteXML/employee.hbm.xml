@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.hibernate.tutorial.TablePerConcreteXML.Employee" table="empunion" discriminator-value="emp" >
+		<id name="id" >
+			<generator class="increment" />
+		</id>
+		<property name="name"></property>
+
+		<union-subclass name="com.hibernate.tutorial.TablePerConcreteXML.RegularEmployee" table="reg_empunion">
+			<property name="salary"></property>
+			<property name="bonus"></property>
+		</union-subclass>
+
+		<union-subclass name="com.hibernate.tutorial.TablePerConcreteXML.ContractEmployee" table="con_empunion">
+			<property name="payPerHour"></property>
+			<property name="contractDuration"></property>
+		</union-subclass>
+
+	</class>
+</hibernate-mapping>
